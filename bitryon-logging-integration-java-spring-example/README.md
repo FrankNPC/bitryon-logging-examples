@@ -1,0 +1,244 @@
+
+# For logger usage #
+
+Why bitryon logger?
+
+bitryon logger is the next generation logger and tracing solution, seamlessly unify logs across services as workflow, sanitize sensitive/personal identification information/PII content painlessly, and test supports against models and services.
+
+1: logging could be much ambiguous leading the troubleshoot very exhausted. with bitryon logger, just configuration can cover all of necessary logs. bitryon logger also support writing logs to the tracing by your own. -- with proper configuration even no need to write a single log.
+
+2: When you access complicated business logic cross services, tracing the payloads would be much challenging. bitryon logger provides logging in language support(No need http proxy/servers) to capture the entire logic traces - no need to search logs any more although we provide.
+
+3: when you sanitize sensitive/PII in the logs, the difficulty is you may do it before writing into logs, or other assistances. Simple bitryon logger configurations can convert to the desired mask or encryption without changing code.
+
+4: with well preserved logs, in batch basis painlessly testing or re-entering the methods that were failed due to bugs or errors turns troubleshooting and datafix an easy job.
+
+5: bitryon logger can co-exist with any logger like log4j.
+
+More details please check out [www.bitryon.io](https://www.bitryon.io) and [bitryon-logging-integration-java-spring-example](https://github.com/FrankNPC/bitryon-logging-examples/tree/main/bitryon-logging-integration-java-spring-example) 
+
+more language supports coming soon
+
+#### Introduce in maven ####
+
+```
+	<dependency>
+		<groupId>io.bitryon</groupId>
+		<artifactId>bitryon-logger</artifactId>
+		<version>1.0-SNAPSHOT</version> <!-- new version https://repo1.maven.org/maven2/io/bitryon/bitryon-logger -->
+	</dependency>
+```
+
+#### Configure Logger ####
+
+It's better to start with spring, see [bitryon-logging-integration-java-spring-example](https://github.com/FrankNPC/bitryon-logging-examples/tree/main/bitryon-logging-integration-java-spring-example) 
+
+
+### For Logging, there are two ways to use ###
+
+- 1, On method (Recommended, supporting log sample test)
+
+> `Annotate @Logging on the method/class to log the parameters/returns for the methods, by default`
+
+```java
+class ABC{
+  @Logging
+  TypeABC func(String str) { // line ~233
+    // first line better right next
+    //do some work
+    return TypeABC
+  }
+}
+ 
+class DEF {
+  Object caller(){
+    return func("str123");//line 456
+  }
+}
+```
+
+> log: ...ABC.class#func#233#|[{"str":"str123"}]
+
+> log: ...ABC.class#func#233#R|[TypeABC->toJson]
+
+Sample:
+> 2025-08-21 01:08:33.791|main-http-nio-80-exec-1-40-5|5Lwgxyfqe3xaDnv23BEXPlhOdMJ1Lldj|4-1|JSON|UserServiceImpl.java#io.bitryon.example.web.service.rpc.UserServiceImpl#save#60#|[{"user":{"name":"br\*\*\*ng","id":0,"driverLisenceId":"\*\*\*\*\*\*","age":1001}}]
+
+> 2025-08-21 01:08:33.792|main-http-nio-80-exec-1-40-5|5Lwgxyfqe3xaDnv23BEXPlhOdMJ1Lldj|4-2|JSON|UserServiceImpl.java#io.bitryon.example.web.service.rpc.UserServiceImpl#save#60#R|[{"name":"br\*\*\*ng","id":789,"driverLisenceId":"\*\*\*\*\*\*","age":1001}]
+
+
+`Tips for interface it needs AOP or proxy like spring pointcut`
+
+
+- 2, In method
+
+> `Annotate @Logging with catchPackages/catchClasses on the method/class to log the parameters/returns for the methods.`
+
+```java
+class ABC{
+  @Logging(catchPackages="io.bitryon.example.web") 
+  TypeABC func(String str123) { // line 234
+    //do some work
+    Object obj = caller.call(str123); // line 278
+    //do some work
+    return TypeABC // line 299
+  }
+}
+
+package io.bitryon.example.web;
+class DEF {
+  Object call(){
+    return TypeABC.func("str456");//334
+  }
+}
+```
+
+> log: ...DEF.class#call#334|[{"str123":"str123"}]
+
+> log: ...DEF.class#call#334R|[{"str456":"str456"}]
+
+Sample:
+> 2025-08-21 01:08:30.752|main-http-nio-80-exec-4-43-5|We56EsinM00UnynirAHrnp9XXsg3avlc|11|JSON|MedicService.java#io.bitryon.example.web.service.MedicService#lambda$0#38|[{"userId":123}]
+
+> 2025-08-21 01:08:30.756|main-http-nio-80-exec-4-43-5|We56EsinM00UnynirAHrnp9XXsg3avlc|12|JSON|MedicService.java#io.bitryon.example.web.service.MedicService#lambda$0#38R|[{"name":"ra\*\*\*ly","id":123,"driverLisenceId":"\*\*\*\*\*\*","age":null}]
+
+
+`Tips: take in mind of the sanitizer, in case SearchController requires name/driverLisenceId to be masked`
+`Tips: line number 0 means no catcher class/package, or on interface`
+
+
+## There are three ways to turn on the logging: ##
+
+ * There are three ways to turn on the logging:
+ * 1: load agent before any classes: 
+ 
+ ```
+	public static void main(String[] args) {
+		//io.bitryon.logger.boostrap.LoggingInitiation.premain(null); // must load before everything. or add https://github.com/FrankNPC/bitryon-logging-examples/blob/main/bitryon-logging-integration-java-spring-example/src/main/resources/META-INF/spring.factories 
+		new SpringApplicationBuilder(ServerBootApplication.class).run(args);
+	}
+```
+ * 2: load the jar with javaagent: java -javaagent:bitryon-logger-1.0.1.jar= -jar your-app.jar
+ * 3: add io.bitryon.logger.spring.LoggingInitiationSpringApplicationRunListener to META-INF/spring.factories
+ 
+ * In general, above is enough,
+ * X: It may not work on final methods, or interface with @Logging, or with JUnit, try proxy and AOP pointcut
+ * Y: Annotate methods/classes/interfaces with @Logging, or manually add methods: io.bitryon.logger.boostrap.LoggingMethodIntercepter.addTargetMethods/addTargetMethod/addClasses
+ * Z: Integrate bitryon-logger-spring-boot-starter with AutoConfigurationBitryonLogger could work for AOP to proxy interfaces.
+
+---
+
+### PII or sensitive info protection ###
+
+ - sanitizer : /TYPE/Step/[placeholder: *]/MASK(key1|key2)/[placeholder: KEY-base62]/AES(key1|key2)
+ - start with /, not end with /; can place multiple groups; $ is to pass parameters.
+ - Or, start without / to match specified method by @Logging;
+ 
+> TYPE: in general it's JSON, could be ERROR or TEXT etc.
+
+> Step: support wildcard match:
+>> `/JSON/*Controller.java*controller.*Controller#*/*/MASK(encryptionKey)/*/MD5(sessionId|session_id)`
+
+> placeholder: should be base 62 GMP for [vector of MD5/SHA1/SHA256 and key for AES]; may leave it empty then it will use default *
+
+> Currently supported
+
+```java
+		EMPTY, -- set the string value of the keys to empty string
+		SKIP, -- skip the value of the key so the log doesn't print it.
+		POPULAR, -- capture it then scan the entire log to replace all. can use with others: POPULAR(MASK(key1))
+		AES, -- AES encryption.
+		MD5, -- MD5(key1) -> XWvr4b7h0XBFB79Irz1ny; MD5$1(key1) -> XWvr4b7h0XBFB79Irz1ny-423; 423 is the length of the original text
+		SHA1, -- similar with MD5
+		SHA256, -- similar with MD5
+		MASK, -- Mask the value of the key:
+			 */MASK(key1) -> ***123456 -> *****; 
+			 */MASK$3(key1) -> 12345678 ->123***678; 12345 -> 123***45
+		DATE_FORMATER: -- yyyy-hh-mm HH:MM:ss.ssss/DATE_FORMATER(key); the placeholder is the formatter. See java.text.SimpleDateFormat
+		FLOAT_FORMATER: -- #,##0.00/FLOAT_FORMATER(key); the placeholder is the formatter. See java.text.DecimalFormat
+		DECIMAL_FORMATER: -- same with FLOAT_FORMATER
+```
+
+>> `For TYPE=TEXT: The param should be a regexp to capture text: MASK(license=[a-z0-9]+)`
+
+>> `For TYPE=JSON/ERROR: the param should be the key names: MASK(bean/property/map_key_name)`
+
+
+### Trace ###
+
+It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID from/to the prev/next service to form the trace, reset the log id(trace id+sequence id etc.) before or after a thread process. See LoggingHttpClientHeaderWriterInterceptor/LoggingHttpRequestWebFilter and bitryon-logger-spring-boot-starter/README.md
+
+configure bitryon.app-node.http-header-id-type to write HTTP_HEADER_STEP_TRACE_ID in HTTP response header, get it and access by the link: https://dev-portal.bitryon.io/trace.html?id=[X-Step-Trace-Id]; Or search by keywords through the portal.
+
+
+### Upload logs ###
+download and configure [bitryon-logging-agent](https://github.com/FrankNPC/bitryon-logging-examples/tree/main/bitryon-logging-agent) to upload the logs into bitryon.io for traces.
+
+### Unit Test / QA improvement ###
+the idea is to check if the values appear in the sample payload with the method calls' return. For some unit tests, we don't need to exam all of returned values and json-structure exactly matched. Therefore the sample must be a subset of the returned objects after the invoke. So we can manipulate unit tests by logs.
+
+check out LocalCasesTest and LogLineInvokerHelper how do they run unit test by logs.
+The test case file contains a pair(separated by \3\n) of log, parameter and return samples of the method as the input to invoke the method, and output to match the return of the method invoke.
+Do this in spring will automatically bring up the methods from beans and run the invokes. Or checkout LogLineHelperTest.
+
+> Full match
+
+```java
+
+	@Test
+	public void test_case5() throws Exception {
+		String fileName = "sample/test_case5.log";
+		LogLineInvoke logLineInvoke = LogLineHelper.readLogLineFile(fileName);
+		LogLineInvokerHelper.invokeLogLineInvokers(loggingMethodIntercepter, methodToBeans, logLineInvoke);
+		Object[] retVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getPayload());
+		Assertions.assertEquals(retVals[0], logLineInvoke.getReturnAndParameter()[0]);
+	}
+```
+
+> contain subset
+
+```java
+
+	@Test
+	public void test_case8() throws Exception {
+		String fileName = "sample/test_case8.log";
+		LogLineInvoke logLineInvoke = LogLineHelper.readLogLineFile(fileName);
+		LogLineInvokerHelper.invokeLogLineInvokers(loggingMethodIntercepter, methodToBeans, logLineInvoke);
+		Object[] retSampleVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getPayload());
+		Assertions.assertTrue(LogLineInvokerHelper.containSubset(retSampleVals[0], logLineInvoke.getReturnAndParameter()[0]));
+		Assertions.assertFalse(LogLineInvokerHelper.containSubset(logLineInvoke.getReturnAndParameter()[0], retSampleVals[0]));
+	}
+```
+
+`Tips: the tests won't run with sanitizers.`
+
+
+
+# For bitryon-logger-spring-boot-starter integration #
+
+ - 1, introduce the jar, annotate beans with [@Logging](https://github.com/FrankNPC/bitryon-logger/blob/main/src/main/java/io/bitryon/logger/annotation/Logging.java)
+
+```
+		<dependency>
+			<groupId>io.bitryon</groupId>
+			<artifactId>bitryon-logger-spring-boot-starter</artifactId>
+			<version>1.0-SNAPSHOT</version> <!--  new version https://repo1.maven.org/maven2/io/bitryon/bitryon-logger-spring-boot-starter -->
+		</dependency>
+```
+
+
+ - 2, configuration. see the explains in src/*/resource/application.xml, configure logger and app-node.
+    -  import AutoConfigurationBitryonLogger.class to declare default Logging.
+
+ - 3, configure http client by adding LoggingHttpClientHeaderWriterInterceptor to write header HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id), so the next app/service/web-server can pick it up. 
+See [UserServiceSubscriber](https://github.com/FrankNPC/bitryon-logging-examples/blob/main/bitryon-logging-integration-java-spring-example/src/main/java/io/bitryon/example/web/config/UserServiceSubscriber.java)
+
+ - 4, configure web server by adding FilterRegistrationBean< LoggingHttpRequestWebFilter > to pick up header HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) from the http request. 
+See [ExampleWebServerConfiguration](https://github.com/FrankNPC/bitryon-logging-examples/blob/main/bitryon-logging-integration-java-spring-example/src/main/java/io/bitryon/example/web/config/ExampleWebServerConfiguration.java)
+
+ 
+#### see example [bitryon-logging-integration-java-spring-example](https://github.com/FrankNPC/bitryon-logging-examples/tree/main/bitryon-logging-integration-java-spring-example) ####
+
+![Screenshot trace](./Screenshot-trace.png)
+
+
