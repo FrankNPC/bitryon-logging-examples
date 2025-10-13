@@ -1,5 +1,3 @@
-Why bitryon?
-
 Why bitryon logger?
 
 bitryon logger is the next generation logger and tracing solution, seamlessly unify logs across services as workflow, sanitize sensitive/personal identification information/PII content painlessly, and test supports against models and services.
