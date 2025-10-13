@@ -9,6 +9,6 @@ The jar is executable:
 
 The file name and host id should be less than 256, not blank and not one of '"<>[]{}@&\
 
-To import logs from other logging files, configure bitryon.logging.agent.log-convertor. It converts to bitryon' style to be searched from portal.
-    
+To import logs from other logging files, configure bitryon.logging.log-convertor. It converts to bitryon' style to be searched from portal.
+
 More explains see src/test/resources/application.xml

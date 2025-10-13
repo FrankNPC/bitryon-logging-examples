@@ -7,7 +7,7 @@ spring:
 bitryon:
   logging:
     agent:
-      server-url: wss://localhost/  # out official log ingest host
+      server-url: wss://localhost/  # official log ingest host
       app-key: gwI718pjfZO7LpGW1INf9ME0cnYnjeE9dfnaN4c2VqZgW4ce # the app key issued through web-portal after activiated the app
       host-id: prd-test-host-please-change-to-your-unique-host-id # your host-id, this is to differentiate files between hosts. less than 256 characters
       watch-dirs: ./logs # point to the folder of the app/service
