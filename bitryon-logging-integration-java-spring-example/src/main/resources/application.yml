@@ -19,7 +19,7 @@ bitryon:
     print-stdout: true # print to console
     print-file: true # write to file
     log-date-time-format: yyyy-MM-dd HH:mm:ss.SSS # UTC. the time on the head of the log. Leave blank will print System.currentTimeMillis
-    log-async: true # blocking IO or NIO write files
+    log-async: true # false blocking IO; true NIO write files, it could lose part of logs if JVM crashes
     log-light: false # full step info, or light. true: MedicController.java#io.bitryon.web.controller.MedicController#query#123; no thread info, type JSON->J, false: #.MedicController#query#123
     log-pretty: true # print pretty json and log, by new line and intends. close it in prd if needed.
     log-sanitizer-patterns: >
