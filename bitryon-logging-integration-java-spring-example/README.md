@@ -31,7 +31,12 @@ more language supports coming soon
 
 #### Configure Logger ####
 
-It's better to start with spring, see [bitryon-logging-integration-java-spring-example](https://github.com/FrankNPC/bitryon-logging-examples/tree/master/bitryon-logging-integration-java-spring-example) 
+1: Load configuration by LoggerFactory / LoggerProvider:
+for LoggerFactory, place bitryon_logger.properties under the resource path. See [bitryon-logging-integration-java-spring-example/bitryon_logger.properties](https://github.com/FrankNPC/bitryon-logging-examples/blob/master/bitryon-logging-integration-java-spring-example/src/main/resources/bitryon_logger.properties) 
+
+2: Load configuration by spring boot, see [bitryon-logging-integration-java-spring-example/application.yml](https://github.com/FrankNPC/bitryon-logging-examples/blob/master/bitryon-logging-integration-java-spring-example/src/main/resources/application.yml) 
+
+Both way cannot co-exists. 
 
 
 ### For Logging, there are two ways to use ###
