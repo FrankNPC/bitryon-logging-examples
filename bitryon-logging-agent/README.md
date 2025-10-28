@@ -32,7 +32,7 @@ terraform {
   required_providers {
     bitryon = {
       source  = "bitryon-io/bitryon-cloud-provider" 
-      version = ">= 1.0.1"
+      version = ">= 1.0.51"
     }
   }
 }
