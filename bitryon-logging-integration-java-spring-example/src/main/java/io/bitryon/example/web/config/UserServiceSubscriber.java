@@ -46,7 +46,8 @@ public class UserServiceSubscriber<T> extends AbstractServiceSubscriber implemen
 	public Advisor[] getAdvisors() {
 		if (advisors==null) {
 			loggingMethodPointcut.getLoggingTraceMethodInterceptor().addClasses(
-					LoggingUnit.Builder().catchPackages("io.bitryon.example.web.service").build(), 
+					LoggingUnit.Builder().catchPackages("io.bitryon.example.web.service").build(), //catchLoggingMethod(true)
+
 					UserService.class);
 
 			// Pointcut to intercept the methods if log on interfaces or class without @Logging. 

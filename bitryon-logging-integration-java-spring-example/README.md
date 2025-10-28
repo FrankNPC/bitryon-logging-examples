@@ -1,5 +1,11 @@
 
-# For logger usage #
+![Java](https://img.shields.io/badge/Java-9+-blue?logo=java)
+![Maven](https://img.shields.io/badge/Build-Maven-orange?logo=apachemaven)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-brightgreen?logo=springboot)
+![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey?logo=open-source-initiative)
+
+
+# bitryon logger #
 
 Why bitryon logger?
 
@@ -31,7 +37,7 @@ more language supports coming soon
 
 #### Configure Logger ####
 
-1: Load configuration by LoggerFactory / LoggerProvider:
+1: Load configuration and refer logger by LoggerFactory / LoggerProvider:
 for LoggerFactory, place bitryon_logger.properties under the resource path. See [bitryon-logging-integration-java-spring-example/bitryon_logger.properties](https://github.com/FrankNPC/bitryon-logging-examples/blob/master/bitryon-logging-integration-java-spring-example/src/main/resources/bitryon_logger.properties) 
 
 2: Load configuration by spring boot, see [bitryon-logging-integration-java-spring-example/application.yml](https://github.com/FrankNPC/bitryon-logging-examples/blob/master/bitryon-logging-integration-java-spring-example/src/main/resources/application.yml) 
@@ -175,6 +181,7 @@ It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID from/to the prev/next 
 
 configure bitryon.app-node.http-header-id-type to write HTTP_HEADER_STEP_TRACE_ID in HTTP response header, get it and access by the link: https://dev-portal.bitryon.io/trace.html?id=[X-Step-Trace-Id]; Or search by keywords through the portal.
 
+`Tips: it does not work well with ForkJoin pool E.G. CompletableFuture.runAsync()`
 
 ### Upload logs ###
 download and configure [bitryon-logging-agent](https://github.com/FrankNPC/bitryon-logging-examples/tree/master/bitryon-logging-agent) to upload the logs into bitryon.io for traces.
@@ -219,7 +226,7 @@ Do this in spring will automatically bring up the methods from beans and run the
 
 
 
-# For bitryon-logger-spring-boot-starter integration #
+# bitryon-logger-spring-boot-starter #
 
  - 1, introduce the jar, annotate beans with [@Logging](https://github.com/FrankNPC/bitryon-logger/blob/master/src/main/java/io/bitryon/logger/annotation/Logging.java)
 

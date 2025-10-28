@@ -31,7 +31,7 @@ public class MedicConditionController {
 	private static final ObjectMapper objectMapper = new ObjectMapper()
 			.setPropertyNamingStrategy(PropertyNamingStrategies.SnakeCaseStrategy.INSTANCE);
 	
-	private static final Logger logger = LoggerFactory.getAsyncLogger();
+	private static final Logger logger = LoggerFactory.getLogger();
 	
 	@Resource
 	MedicService medicService;

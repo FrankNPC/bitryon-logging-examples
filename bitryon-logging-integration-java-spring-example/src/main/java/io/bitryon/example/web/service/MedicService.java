@@ -64,7 +64,7 @@ public class MedicService {
 		ForStaticMethod.runStatic(savedUser.getId());
 		return savedUser;
 	}
-	
+
 	public String callSelfInvocation(String testString) {
 		callSelfInvocation_protected(testString);
 		return Long.toString(System.currentTimeMillis());

@@ -43,7 +43,7 @@
 		<dependency>
 			<groupId>io.bitryon</groupId>
 			<artifactId>bitryon-logger-spring-boot-starter</artifactId>
-			<version>1.0.2</version><!-- https://repo1.maven.org/maven2/io/bitryon/bitryon-logger-spring-boot-starter -->
+			<version>1.0-SNAPSHOT</version><!-- https://repo1.maven.org/maven2/io/bitryon/bitryon-logger-spring-boot-starter -->
 		</dependency>
 		
 		<dependency>
@@ -112,7 +112,11 @@
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
+					
+					<!-- it may be needed for some edge cases to print the name of parameters of methods, or work with sanitizer -->
+					<!--
 					<compilerArgument>-parameters</compilerArgument>
+					-->
 				</configuration>
 			</plugin>
 			

@@ -12,8 +12,8 @@ import io.bitryon.logger.annotation.Logging;
 @Repository
 @Logging
 public class MedicDAO {
-	//We could use mybatis interface, then it requires APO or proxy on interfaces to get logged.
-	
+	//We could use mybatis interface, then it requires AOP or proxy on interfaces to get logged.
+
 	public List<MedicCondition> query(long userId, Page page){
 		MedicCondition medic1 = new MedicCondition();
 		medic1.setDeceases("idk, maybe conding fever");

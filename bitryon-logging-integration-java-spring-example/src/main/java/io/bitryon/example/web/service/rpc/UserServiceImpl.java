@@ -26,7 +26,7 @@ public class UserServiceImpl { // impelements UserService {
 			return null;
 		}
 
-		logger.log("This should be remote service, will be with trace", userId);
+		logger.text("This should be remote service, will be with trace for user {}", userId);
 		User user = new User();
 		user.setId(123L);
 		try {

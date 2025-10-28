@@ -1,5 +1,6 @@
 package io.bitryon.example.web.service;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -17,16 +18,17 @@ public class SMTPEmailScheduler {
 	@Resource
 	SMTPEmailService smtpEmailService;
 
-	private static final Logger logger = LoggerFactory.getAsyncLogger();
+	private static final Logger logger = LoggerFactory.getLogger();
 
-	@Logging(reset=true)// reset the context so each call will be new ids
+	//Random to print log if only need some samples. in case of 2 / 3 chance to print logs
+	@Logging(reset=true, skipRandom=Integer.MAX_VALUE / 3 * 2)// reset the context so each call will be new ids
 	public void runMailRunnable() {
 		if (mailRunnable!=null) {
 			mailRunnable.run();
 			mailRunnable = null;
 		}
 	}
-    
+	
 	private Runnable mailRunnable = null;
 	/**
 	 * If the thread is created by another un-related thread, it needs to setup the log id manually in order to trace.
@@ -41,7 +43,7 @@ public class SMTPEmailScheduler {
 		mailRunnable = new Runnable() {// it will be running by another scheduler thread
 			@Override
 			public void run() {
-				logger.setStepLogId(logId);// must set the log id for the un-related thread
+				logger.setStepLogId(logId);// must set the log id for the none-parent-child thread if want to continue the trace
 				smtpEmailService.sendVerificationUrl(recipient, verificationUrl);
 			}
 		};
@@ -62,13 +64,9 @@ public class SMTPEmailScheduler {
 //				smtpEmailService.sendVerificationUrl(recipient, verificationUrl);
 //			}
 //		}).start();
-		
-		executor.submit(new Runnable() {
-			@Override
-			public void run() {
-				smtpEmailService.sendVerificationUrl(recipient, verificationUrl);
-			}
-		});
+		CompletableFuture.runAsync(()->{
+			smtpEmailService.sendVerificationUrl(recipient, verificationUrl);
+		}, executor);// Hiccup, avoid forkjoin pool
 	}
 
 }
