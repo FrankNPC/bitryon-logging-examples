@@ -7,7 +7,6 @@ import org.apache.hc.client5.http.config.ConnectionConfig;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
-import org.springframework.aop.Advisor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,20 +40,19 @@ public class UserServiceSubscriber<T> extends AbstractServiceSubscriber implemen
 	@Resource
 	LoggerProvider bitryonLoggerProvider;
 	
-	private Advisor[] advisors;
-	@Override
-	public Advisor[] getAdvisors() {
-		if (advisors==null) {
-			loggingMethodPointcut.getLoggingTraceMethodInterceptor().addClasses(
-					LoggingUnit.Builder().catchPackages("io.bitryon.example.web.service").build(), //catchLoggingMethod(true)
-
-					UserService.class);
-
-			// Pointcut to intercept the methods if log on interfaces or class without @Logging. 
-			advisors = new Advisor [] { loggingMethodPointcut };
-		}
-		return advisors;
-	}
+//	private Advisor[] advisors;
+//	@Override
+//	public Advisor[] getAdvisors() {
+//		if (advisors==null) {
+//			loggingMethodPointcut.getLoggingTraceMethodInterceptor().addClasses(
+//					LoggingUnit.Builder().catchPackages("io.bitryon.example.web.service").build(),
+//
+//					UserService.class);
+//
+//			advisors = new Advisor [] { loggingMethodPointcut };
+//		}
+//		return advisors;
+//	}
 	
 	private CloseableHttpClient httpClient() {
 		PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
@@ -89,7 +87,15 @@ public class UserServiceSubscriber<T> extends AbstractServiceSubscriber implemen
 
 	@Bean
 	UserService getUserRPCService() {
-		return this.getProxyFactoryBean(UserService.class, this);
+		return (UserService) loggingMethodPointcut.proxyBeanInstance(// Pointcut to intercept the methods if log on interfaces or class without @Logging. 
+				LoggingUnit.Builder().catchPackages("io.bitryon.example.web.service").build(),  //catchLoggingMethod(true)
+					this.getProxyFactoryBean(UserService.class, this), UserService.class);
+//		return this.getProxyFactoryBean(UserService.class, this);
 	}
 
+//	@Bean
+//	UserServiceImpl getUserRPCService(UserServiceImpl userService) { // to proxy a direct class without @Logging
+////		UserServiceImpl userService = new UserServiceImpl();
+//		return (UserServiceImpl) loggingMethodPointcut.proxyBeanInstance(LoggingUnit.Builder().build(), userService);
+//	}
 }

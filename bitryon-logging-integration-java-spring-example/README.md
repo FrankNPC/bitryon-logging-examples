@@ -40,12 +40,33 @@ more language supports coming soon
 1: Load configuration and refer logger by LoggerFactory / LoggerProvider:
 for LoggerFactory, place bitryon_logger.properties under the resource path. See [bitryon-logging-integration-java-spring-example/bitryon_logger.properties](https://github.com/FrankNPC/bitryon-logging-examples/blob/master/bitryon-logging-integration-java-spring-example/src/main/resources/bitryon_logger.properties) 
 
+
 2: Load configuration by spring boot, see [bitryon-logging-integration-java-spring-example/application.yml](https://github.com/FrankNPC/bitryon-logging-examples/blob/master/bitryon-logging-integration-java-spring-example/src/main/resources/application.yml) 
 
 Both way cannot co-exists. 
 
+`Tips If start LoggerFactory earlier and bitryon_logger.properties exists, it will read and load configures exclusively; Otherwise, both mode will use the same configuration injected by spring`
 
-### For Logging, there are two ways to use ###
+
+#### Initiate the Logger ####
+
+```java
+		// 1: load logger agent
+		LoggingInitiation.premain(null);
+
+		// 2: load logger configure
+		LoggerProvider provider = LoggerProvider.getProvider("bitryon_log.properties", null);
+		
+		// 3: load LoggingMethodIntercepter, In spring it doesn't need
+		// Must do to setup LoggingMethodIntercepter and LoggerProvider
+		new LoggingMethodIntercepter(provider);
+		
+		// Or by LoggerFactory default settings
+//		new LoggingMethodIntercepter(LoggerFactory.getLoggerProvider());
+		
+```
+		
+### Logging, there are two ways to use ###
 
 - 1, On method (Recommended, supporting log sample test)
 

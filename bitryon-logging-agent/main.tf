@@ -18,12 +18,12 @@ provider "bitryon" {
   account_api_key = "" # get it from the account.
 }
 
-resource "bitryon_cloud_application" "test" {
+resource "bitryon_cloud_logging_application" "test" {
   name        = "bitryon-your-service"
   retention   = 12312321             # seconds to keep data alive
   tags        = "xxx,few,wwww,22222" # for search purpose
 }
 
-output "bitryon_cloud_application" {
-  value = bitryon_cloud_application.test
+output "bitryon_cloud_logging_application" {
+  value = bitryon_cloud_logging_application.test
 }
