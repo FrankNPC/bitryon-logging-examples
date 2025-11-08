@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey?logo=open-source-initiative)
 
 
-# bitryon logger #
+# bitryon logger
 
 Why bitryon logger?
 
@@ -25,7 +25,7 @@ More details please check out [www.bitryon.io](https://www.bitryon.io) and [bitr
 
 more language supports coming soon
 
-#### Introduce in maven ####
+## Introduce in maven
 
 ```
 	<dependency>
@@ -35,7 +35,7 @@ more language supports coming soon
 	</dependency>
 ```
 
-#### Configure Logger ####
+## Configure Logger
 
 1: Load configuration and refer logger by LoggerFactory / LoggerProvider:
 for LoggerFactory, place bitryon_logger.properties under the resource path. See [bitryon-logging-integration-java-spring-example/bitryon_logger.properties](https://github.com/FrankNPC/bitryon-logging-examples/blob/master/bitryon-logging-integration-java-spring-example/src/main/resources/bitryon_logger.properties) 
@@ -48,7 +48,7 @@ Both way cannot co-exists.
 `Tips If start LoggerFactory earlier and bitryon_logger.properties exists, it will read and load configures exclusively; Otherwise, both mode will use the same configuration injected by spring`
 
 
-#### Initiate the Logger ####
+## Initiate the Logger
 
 ```java
 		// 1: load logger agent
@@ -66,7 +66,7 @@ Both way cannot co-exists.
 		
 ```
 		
-### Logging, there are two ways to use ###
+## Logging, there are two ways to use
 
 - 1, On method (Recommended, supporting log sample test)
 
@@ -160,7 +160,7 @@ Sample:
 
 ---
 
-### PII or sensitive info protection ###
+## PII or sensitive info protection
 
  - sanitizer : /TYPE/Step/[placeholder: *]/MASK(key1|key2)/[placeholder: KEY-base62]/AES(key1|key2)
  - start with /, not end with /; can place multiple groups; $ is to pass parameters.
@@ -196,7 +196,7 @@ Sample:
 >> `For TYPE=JSON/ERROR: the param should be the key names: MASK(bean/property/map_key_name)`
 
 
-### Trace ###
+## Trace
 
 It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID from/to the prev/next service to form the trace, reset the log id(trace id+sequence id etc.) before or after a thread process. See LoggingHttpClientHeaderWriterInterceptor/LoggingHttpRequestWebFilter and bitryon-logger-spring-boot-starter/README.md
 
@@ -204,10 +204,10 @@ configure bitryon.app-node.http-header-id-type to write HTTP_HEADER_STEP_TRACE_I
 
 `Tips: it does not work well with ForkJoin pool E.G. CompletableFuture.runAsync()`
 
-### Upload logs ###
+## Upload logs
 download and configure [bitryon-logging-agent](https://github.com/FrankNPC/bitryon-logging-examples/tree/master/bitryon-logging-agent) to upload the logs into bitryon.io for traces.
 
-### Unit Test / QA improvement ###
+## Unit Test / QA improvement
 the idea is to check if the values appear in the sample payload with the method calls' return. For some unit tests, we don't need to exam all of returned values and json-structure exactly matched. Therefore the sample must be a subset of the returned objects after the invoke. So we can manipulate unit tests by logs.
 
 check out LocalCasesTest and LogLineInvokerHelper how do they run unit test by logs.
@@ -247,7 +247,7 @@ Do this in spring will automatically bring up the methods from beans and run the
 
 
 
-# bitryon-logger-spring-boot-starter #
+# bitryon-logger-spring-boot-starter
 
  - 1, introduce the jar, annotate beans with [@Logging](https://github.com/FrankNPC/bitryon-logger/blob/master/src/main/java/io/bitryon/logger/annotation/Logging.java)
 
@@ -270,7 +270,7 @@ See [UserServiceSubscriber](https://github.com/FrankNPC/bitryon-logging-examples
 See [ExampleWebServerConfiguration](https://github.com/FrankNPC/bitryon-logging-examples/blob/master/bitryon-logging-integration-java-spring-example/src/main/java/io/bitryon/example/web/config/ExampleWebServerConfiguration.java)
 
  
-#### see example [bitryon-logging-integration-java-spring-example](https://github.com/FrankNPC/bitryon-logging-examples/tree/master/bitryon-logging-integration-java-spring-example) ####
+### see example [bitryon-logging-integration-java-spring-example](https://github.com/FrankNPC/bitryon-logging-examples/tree/master/bitryon-logging-integration-java-spring-example) 
 
 ![Screenshot trace](./Screenshot-trace.png)
 
