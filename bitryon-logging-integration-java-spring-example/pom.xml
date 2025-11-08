@@ -49,7 +49,7 @@
 		<dependency>
 			<groupId>io.bitryon</groupId>
 			<artifactId>bitryon-spring-rmi-http</artifactId><!-- https://github.com/FrankNPC/bitryon-spring-rmi-http -->
-			<version>1.0-SNAPSHOT</version>
+			<version>1.0.8</version>
 		</dependency>
 		
 		<dependency>

@@ -31,7 +31,7 @@ more language supports coming soon
 	<dependency>
 		<groupId>io.bitryon</groupId>
 		<artifactId>bitryon-logger</artifactId>
-		<version>1.0-SNAPSHOT</version> <!-- new version https://repo1.maven.org/maven2/io/bitryon/bitryon-logger -->
+		<version>1.0.60</version> <!-- new version https://repo1.maven.org/maven2/io/bitryon/bitryon-logger -->
 	</dependency>
 ```
 
@@ -64,9 +64,13 @@ Both way cannot co-exists.
 		// Or by LoggerFactory default settings
 //		new LoggingMethodIntercepter(LoggerFactory.getLoggerProvider());
 		
+		// use by tradition logger style
+//		private static final Logger logger = LoggerFactory.getLogger();
+//		logger.log(objects);
+//		logger.text("print objects {} {}", objects...);
 ```
 		
-## Logging, there are two ways to use
+## @Logging, there are two ways to use
 
 - 1, On method (Recommended, supporting log sample test)
 
@@ -139,7 +143,7 @@ Sample:
 `Tips: line number 0 means no catcher class/package, or on interface`
 
 
-## There are three ways to turn on the logging: ##
+## turn on the logging
 
  * There are three ways to turn on the logging:
  * 1: load agent before any classes: 
@@ -153,7 +157,7 @@ Sample:
  * 2: load the jar with javaagent: java -javaagent:bitryon-logger-1.0.1.jar= -jar your-app.jar
  * 3: add io.bitryon.logger.spring.LoggingInitiationSpringApplicationRunListener to META-INF/spring.factories
  
- * In general, above is enough,
+ * In general, either one of above should be enough,
  * X: It may not work on final methods, or interface with @Logging, or with JUnit, try proxy and AOP pointcut
  * Y: Annotate methods/classes/interfaces with @Logging, or manually add methods: io.bitryon.logger.boostrap.LoggingMethodIntercepter.addTargetMethods/addTargetMethod/addClasses
  * Z: Integrate bitryon-logger-spring-boot-starter with AutoConfigurationBitryonLogger could work for AOP to proxy interfaces.
@@ -244,7 +248,6 @@ Do this in spring will automatically bring up the methods from beans and run the
 ```
 
 `Tips: the tests won't run with sanitizers.`
-
 
 
 # bitryon-logger-spring-boot-starter
