@@ -1,0 +1,719 @@
+2025-11-08T00:57:31.582Z||qnizoAi5l5ljBARO||CONF|||
+[{
+	"BootInfo": {
+		"program": "1.2.2-1231321.jar",
+		"region": "use-1",
+		"version": "1.2.3",
+		"external-ip": "12.2.2.2",
+		"internal-ip": "12.2.2.2",
+		"platform": {
+			"cloud": "aws"
+		}
+	},
+	"AppNodeConfig": {
+		"applicationName": "bitryon-logging-integration-java-spring-example",
+		"httpHeaderIdType": 1,
+		"hostId": "node-123.test.test"
+	},
+	"Github": {
+		"host": "https://github.com/",
+		"repository": "RepoOwner/bitryon-logging-integration-java-spring-example",
+		"branch": "main",
+		"commit": "xxxxxxx",
+		"sourcePaths": [
+			"src/main/java"
+		]
+	},
+	"LoggerConfig": {
+		"fileName": "./logs/bitryon-logging-integration-java-spring-example",
+		"logSanitizerPatterns": [
+			"/JSON/*Service*.java*.service.*UserService*#*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday)",
+			"/JSON/*MedicService*#*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday)",
+			"/JSON/*.java*.Medic*#*/*/MASK$4(deceases)/yyyy-MM-dd HH:mm:ss.ssss/DATE_FORMATER(timeCreated)",
+			"/HTTP/*LoggingHttpRequestWebReader#readHttpRequest*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday)"
+		],
+		"fileMaxLength": 536870912,
+		"logDateTimeFormat": "yyyy-MM-dd HH:mm:ss.SSS",
+		"loggerSchemaVersion": "1.0",
+		"logLight": false,
+		"logAsync": true,
+		"logPretty": true,
+		"printStdout": true,
+		"printFile": true
+	}
+}]
+2025-11-08 00:57:32.648|scheduling-1#52|fjuG6glbahtEC5DoZ832rbLi2Env1NW5|1|JSON|Send Verification Url To Customers|
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[{
+	"recipient": "som***own",
+	"verificationUrl": "http://localhost/verifyyouremail"
+}]
+2025-11-08 00:57:32.651|scheduling-1#52|fjuG6glbahtEC5DoZ832rbLi2Env1NW5|2|TEXT||
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-11-08 00:57:32.653|scheduling-1#52|fjuG6glbahtEC5DoZ832rbLi2Env1NW5|3|JSON|Send Verification Url To Customers|
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+["<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"]
+2025-11-08 00:57:32.653|scheduling-1#52|1KQytYHa2wQf8srolxlsXOibyBW5zH0Y|1|JSON|Send Verification Url To Customers|
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[{
+	"recipient": "som***own",
+	"verificationUrl": "http://localhost/verifyyouremail"
+}]
+2025-11-08 00:57:32.654|scheduling-1#52|1KQytYHa2wQf8srolxlsXOibyBW5zH0Y|2|TEXT||
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-11-08 00:57:32.654|scheduling-1#52|1KQytYHa2wQf8srolxlsXOibyBW5zH0Y|3|JSON|Send Verification Url To Customers|
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+["<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"]
+2025-11-08 00:57:32.654|scheduling-1#52|1KdbZ3ZspZBcVR6tuwtxyw7EG3mKNYr9|1|JSON|Send Verification Url To Customers|
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[{
+	"recipient": "som***own",
+	"verificationUrl": "http://localhost/verifyyouremail"
+}]
+2025-11-08 00:57:32.654|scheduling-1#52|1KdbZ3ZspZBcVR6tuwtxyw7EG3mKNYr9|2|TEXT||
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-11-08 00:57:32.654|scheduling-1#52|1KdbZ3ZspZBcVR6tuwtxyw7EG3mKNYr9|3|JSON|Send Verification Url To Customers|
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+["<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"]
+2025-11-08 00:57:32.654|scheduling-1#52|1KkwyKBPBI328x923zDzsG1tBy9wNfQt|1|JSON|Send Verification Url To Customers|
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[{
+	"recipient": "som***own",
+	"verificationUrl": "http://localhost/verifyyouremail"
+}]
+2025-11-08 00:57:32.654|scheduling-1#52|1KkwyKBPBI328x923zDzsG1tBy9wNfQt|2|TEXT||
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-11-08 00:57:32.654|scheduling-1#52|1KkwyKBPBI328x923zDzsG1tBy9wNfQt|3|JSON|Send Verification Url To Customers|
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+["<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"]
+2025-11-08 00:57:32.654|scheduling-1#52|4aPQiQR50wSLXqnqQlcZGdfSux7q7oDv|1|JSON|Send Verification Url To Customers|
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[{
+	"recipient": "som***own",
+	"verificationUrl": "http://localhost/verifyyouremail"
+}]
+2025-11-08 00:57:32.655|scheduling-1#52|4aPQiQR50wSLXqnqQlcZGdfSux7q7oDv|2|TEXT||
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-11-08 00:57:32.655|scheduling-1#52|4aPQiQR50wSLXqnqQlcZGdfSux7q7oDv|3|JSON|Send Verification Url To Customers|
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+["<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"]
+2025-11-08 00:57:32.655|scheduling-1#52|5oM6BjyxXNaKEgFAK3c6JWvK9xYR2rto|1|JSON|Send Verification Url To Customers|
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[{
+	"recipient": "som***own",
+	"verificationUrl": "http://localhost/verifyyouremail"
+}]
+2025-11-08 00:57:32.655|scheduling-1#52|5oM6BjyxXNaKEgFAK3c6JWvK9xYR2rto|2|TEXT||
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-11-08 00:57:32.655|scheduling-1#52|5oM6BjyxXNaKEgFAK3c6JWvK9xYR2rto|3|JSON|Send Verification Url To Customers|
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+["<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"]
+2025-11-08 00:57:32.655|scheduling-1#52|47KeE0F77zy3QdnqbnZ9KoILuZTeWd7w|1|JSON|Send Verification Url To Customers|
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[{
+	"recipient": "som***own",
+	"verificationUrl": "http://localhost/verifyyouremail"
+}]
+2025-11-08 00:57:32.655|scheduling-1#52|47KeE0F77zy3QdnqbnZ9KoILuZTeWd7w|2|TEXT||
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-11-08 00:57:32.655|scheduling-1#52|47KeE0F77zy3QdnqbnZ9KoILuZTeWd7w|3|JSON|Send Verification Url To Customers|
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+["<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"]
+2025-11-08 00:57:32.655|scheduling-1#52|11XyHKsH8QmomJgQHwRY6WJhRopTQKUV|1|JSON|Send Verification Url To Customers|
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[{
+	"recipient": "som***own",
+	"verificationUrl": "http://localhost/verifyyouremail"
+}]
+2025-11-08 00:57:32.655|scheduling-1#52|11XyHKsH8QmomJgQHwRY6WJhRopTQKUV|2|TEXT||
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-11-08 00:57:32.655|scheduling-1#52|11XyHKsH8QmomJgQHwRY6WJhRopTQKUV|3|JSON|Send Verification Url To Customers|
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+["<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"]
+2025-11-08 00:57:32.656|scheduling-1#52|69hAAx9aIyqutJvONeB6ByV0wpGvxk2c|1|TEXT||
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-11-08 00:57:32.656|scheduling-1#52|3BrHedqsluNR4Y0QJuKSC2ozXqKVAC0D|1|TEXT||
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-11-08 00:57:36.515|http-nio-80-exec-3#42|1FqGbBiJajockp4o8UVWeK7EJy7b0uM0|4-1|HTTP||
+LoggingHttpRequestWebReader.java#io.bitryon.logger.spring.LoggingHttpRequestWebReader#readHttpRequest#36|
+[{
+	"remoteHost": "127.0.0.1:64257"
+},{
+	"method": "POST"
+},{
+	"requestURL": "http://localhost/remote_api/user/save"
+},{
+	"headers": {}
+},{
+	"body": {}
+}]
+2025-11-08 00:57:36.187|http-nio-80-exec-2#41|6zZtLFjRw0XKsEd4asD0hsanRnQMQSeM|1|HTTP||
+LoggingHttpRequestWebReader.java#io.bitryon.logger.spring.LoggingHttpRequestWebReader#readHttpRequest#36|
+[{
+	"remoteHost": "0:0:0:0:0:0:0:1:64252"
+},{
+	"method": "GET"
+},{
+	"requestURL": "http://localhost/api/medic/save"
+},{
+	"headers": {}
+},{
+	"body": {
+		"id": [
+			"123"
+		],
+		"deceases": [
+			"unkown"
+		]
+	}
+}]
+2025-11-08 00:57:36.189|http-nio-80-exec-2#41|6zZtLFjRw0XKsEd4asD0hsanRnQMQSeM|2|JSON||
+MedicConditionController.java#io.bitryon.example.web.controller.MedicConditionController#save#64|
+["save request paylod, should be with trace",{
+	"id": 123,
+	"deceases": "unko***wn",
+	"timeCreated": "1970-01-01 00:00:00.0000",
+	"userId": 0
+}]
+2025-11-08 00:57:36.191|http-nio-80-exec-2#41|6zZtLFjRw0XKsEd4asD0hsanRnQMQSeM|3|JSON||
+ForStaticMethod.java#io.bitryon.example.web.test.ForStaticMethod#query#11#|
+[{
+	"userId": 1762563456190,
+	"page": null
+}]
+2025-11-08 00:57:36.191|http-nio-80-exec-2#41|6zZtLFjRw0XKsEd4asD0hsanRnQMQSeM|4|JSON||
+ForStaticMethod.java#io.bitryon.example.web.test.ForStaticMethod#query#11#R|
+["e1b28805-7f0f-4fd9-a0e8-cdb55854497f"]
+2025-11-08 00:57:36.197|http-nio-80-exec-2#41|6zZtLFjRw0XKsEd4asD0hsanRnQMQSeM|5|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#save#48#|
+[{
+	"condition": {
+		"id": 123,
+		"deceases": "unko***wn",
+		"timeCreated": "1970-01-01 00:00:00.0000",
+		"userId": 0
+	}
+}]
+2025-11-08 00:57:36.198|http-nio-80-exec-2#41|6zZtLFjRw0XKsEd4asD0hsanRnQMQSeM|6|JSON||
+MedicDAO.java#io.bitryon.example.web.dao.MedicDAO#save#36#|
+[{
+	"condition": {
+		"id": 123,
+		"deceases": "unko***wn",
+		"timeCreated": "1970-01-01 00:00:00.0000",
+		"userId": 0
+	}
+}]
+2025-11-08 00:57:36.199|http-nio-80-exec-2#41|6zZtLFjRw0XKsEd4asD0hsanRnQMQSeM|7|JSON||
+MedicDAO.java#io.bitryon.example.web.dao.MedicDAO#save#36#R|
+[{
+	"id": 123,
+	"deceases": "unko***wn",
+	"timeCreated": "1970-01-01 00:00:00.0000",
+	"userId": 0
+}]
+2025-11-08 00:57:36.199|http-nio-80-exec-2#41|6zZtLFjRw0XKsEd4asD0hsanRnQMQSeM|8|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#save#54|
+[{
+	"userId": 0
+}]
+2025-11-08 00:57:35.819|http-nio-80-exec-1#40|1FqGbBiJajockp4o8UVWeK7EJy7b0uM0|1|HTTP||
+LoggingHttpRequestWebReader.java#io.bitryon.logger.spring.LoggingHttpRequestWebReader#readHttpRequest#36|
+[{
+	"remoteHost": "0:0:0:0:0:0:0:1:64251"
+},{
+	"method": "GET"
+},{
+	"requestURL": "http://localhost/api/user/save"
+},{
+	"headers": {}
+},{
+	"body": {
+		"name": [
+			"br***ng"
+		],
+		"driverLisenceId": [
+			"******"
+		],
+		"age": [
+			"1001"
+		]
+	}
+}]
+2025-11-08 00:57:35.956|http-nio-80-exec-1#40|1FqGbBiJajockp4o8UVWeK7EJy7b0uM0|2|JSON||
+ForStaticMethod.java#io.bitryon.example.web.test.ForStaticMethod#runStatic#15#|
+[{
+	"userId": 0
+}]
+2025-11-08 00:57:35.957|http-nio-80-exec-1#40|1FqGbBiJajockp4o8UVWeK7EJy7b0uM0|3|JSON||
+ForStaticMethod.java#io.bitryon.example.web.test.ForStaticMethod#runStatic#15#R|
+["e1d2fb44-c29c-4925-93cc-99081578eaf8"]
+2025-11-08 00:57:35.966|http-nio-80-exec-1#40|1FqGbBiJajockp4o8UVWeK7EJy7b0uM0|4|JSON||
+UserService.java#io.bitryon.example.web.service.rpc.UserService#save#0#|
+[{
+	"user": {
+		"name": "br***ng",
+		"id": 0,
+		"driverLisenceId": "******",
+		"age": 1001
+	}
+}]
+2025-11-08 00:57:36.515|http-nio-80-exec-4#43|6zZtLFjRw0XKsEd4asD0hsanRnQMQSeM|8-1|HTTP||
+LoggingHttpRequestWebReader.java#io.bitryon.logger.spring.LoggingHttpRequestWebReader#readHttpRequest#36|
+[{
+	"remoteHost": "127.0.0.1:64258"
+},{
+	"method": "POST"
+},{
+	"requestURL": "http://localhost/remote_api/user/get_by_id"
+},{
+	"headers": {}
+},{
+	"body": {}
+}]
+2025-11-08 00:57:36.680|http-nio-80-exec-4#43|6zZtLFjRw0XKsEd4asD0hsanRnQMQSeM|8-2|JSON||
+UserServiceImpl.java#io.bitryon.example.web.service.rpc.UserServiceImpl#getById#24#|
+[{
+	"userId": 0
+}]
+2025-11-08 00:57:36.680|http-nio-80-exec-4#43|6zZtLFjRw0XKsEd4asD0hsanRnQMQSeM|8-3|TEXT||
+UserServiceImpl.java#io.bitryon.example.web.service.rpc.UserServiceImpl#getById#29|
+This should be remote service, will be with trace for user 0
+2025-11-08 00:57:36.681|http-nio-80-exec-4#43|6zZtLFjRw0XKsEd4asD0hsanRnQMQSeM|8-4|JSON||
+UserServiceImpl.java#io.bitryon.example.web.service.rpc.UserServiceImpl#getById#24#R|
+[{
+	"name": "ra***ly",
+	"id": 123,
+	"driverLisenceId": "****************************",
+	"age": null
+}]
+2025-11-08 00:57:36.821|http-nio-80-exec-3#42|1FqGbBiJajockp4o8UVWeK7EJy7b0uM0|4-2|JSON||
+UserServiceImpl.java#io.bitryon.example.web.service.rpc.UserServiceImpl#save#60#|
+[{
+	"user": {
+		"name": "br***ng",
+		"id": 0,
+		"driverLisenceId": "******",
+		"age": 1001
+	}
+}]
+2025-11-08 00:57:36.822|http-nio-80-exec-3#42|1FqGbBiJajockp4o8UVWeK7EJy7b0uM0|4-3|JSON||
+UserServiceImpl.java#io.bitryon.example.web.service.rpc.UserServiceImpl#save#60#R|
+[{
+	"name": "br***ng",
+	"id": 789,
+	"driverLisenceId": "******",
+	"age": 1001
+}]
+2025-11-08 00:57:36.829|http-nio-80-exec-2#41|6zZtLFjRw0XKsEd4asD0hsanRnQMQSeM|9|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#save#54R|
+[{
+	"name": "ra***ly",
+	"id": 123,
+	"driverLisenceId": "****************************",
+	"age": null
+}]
+2025-11-08 00:57:36.830|http-nio-80-exec-2#41|6zZtLFjRw0XKsEd4asD0hsanRnQMQSeM|10|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#save#48#R|
+[{
+	"medicConditionDO": {
+		"id": 123,
+		"deceases": "unko***wn",
+		"timeCreated": "1970-01-01 00:00:00.0000",
+		"userId": 0
+	},
+	"user": {
+		"name": "ra***ly",
+		"id": 123,
+		"driverLisenceId": "****************************",
+		"age": null
+	}
+}]
+2025-11-08 00:57:36.829|http-nio-80-exec-1#40|1FqGbBiJajockp4o8UVWeK7EJy7b0uM0|5|JSON||
+UserService.java#io.bitryon.example.web.service.rpc.UserService#save#0#R|
+[{
+	"name": "br***ng",
+	"id": 789,
+	"driverLisenceId": "******",
+	"age": 1001
+}]
+2025-11-08 00:57:36.830|http-nio-80-exec-1#40|1FqGbBiJajockp4o8UVWeK7EJy7b0uM0|6|JSON||
+ForStaticMethod.java#io.bitryon.example.web.test.ForStaticMethod#runStatic#15#|
+[{
+	"userId": 789
+}]
+2025-11-08 00:57:36.830|http-nio-80-exec-1#40|1FqGbBiJajockp4o8UVWeK7EJy7b0uM0|7|JSON||
+ForStaticMethod.java#io.bitryon.example.web.test.ForStaticMethod#runStatic#15#R|
+["e1d2fb44-c29c-4925-93cc-99081578eaf8"]
+2025-11-08 00:57:36.966|http-nio-80-exec-5#44|6reMqYAAV0DgcAusTM2DW3BuI2Dlq3x4|1|HTTP||
+LoggingHttpRequestWebReader.java#io.bitryon.logger.spring.LoggingHttpRequestWebReader#readHttpRequest#36|
+[{
+	"remoteHost": "0:0:0:0:0:0:0:1:64251"
+},{
+	"method": "GET"
+},{
+	"requestURL": "http://localhost/api/medic/test_async_email"
+},{
+	"headers": {}
+},{
+	"body": {}
+}]
+2025-11-08 00:57:36.968|http-nio-80-exec-5#44|6reMqYAAV0DgcAusTM2DW3BuI2Dlq3x4|2|JSON||
+SMTPEmailScheduler.java#io.bitryon.example.web.service.SMTPEmailScheduler#unHookedThreadDelivery#41#|
+[{
+	"recipient": "test@email.email",
+	"verificationUrl": "http://localhost/unHookedThreadDelivery/1762563456967"
+}]
+2025-11-08 00:57:36.970|http-nio-80-exec-5#44|6reMqYAAV0DgcAusTM2DW3BuI2Dlq3x4|3|JSON||
+SMTPEmailScheduler.java#io.bitryon.example.web.service.SMTPEmailScheduler#unHookedThreadDelivery#41#R|
+[null]
+2025-11-08 00:57:37.850|http-nio-80-exec-7#46|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|5-1|HTTP||
+LoggingHttpRequestWebReader.java#io.bitryon.logger.spring.LoggingHttpRequestWebReader#readHttpRequest#36|
+[{
+	"remoteHost": "127.0.0.1:64257"
+},{
+	"method": "POST"
+},{
+	"requestURL": "http://localhost/remote_api/user/get_by_session_id"
+},{
+	"headers": {}
+},{
+	"body": {}
+}]
+2025-11-08 00:57:37.852|http-nio-80-exec-7#46|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|5-2|JSON||
+UserServiceImpl.java#io.bitryon.example.web.service.rpc.UserServiceImpl#getBySessionId#43#|
+[{
+	"sessionId": "xxx"
+}]
+2025-11-08 00:57:37.852|http-nio-80-exec-7#46|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|5-3|JSON||
+UserServiceImpl.java#io.bitryon.example.web.service.rpc.UserServiceImpl#getBySessionId#43#R|
+[{
+	"name": "ra***ly",
+	"id": 456,
+	"driverLisenceId": "****************************",
+	"age": null
+}]
+2025-11-08 00:57:37.860|http-nio-80-exec-8#47|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|19-1|HTTP||
+LoggingHttpRequestWebReader.java#io.bitryon.logger.spring.LoggingHttpRequestWebReader#readHttpRequest#36|
+[{
+	"remoteHost": "127.0.0.1:64257"
+},{
+	"method": "POST"
+},{
+	"requestURL": "http://localhost/remote_api/user/get_by_id"
+},{
+	"headers": {}
+},{
+	"body": {}
+}]
+2025-11-08 00:57:37.862|http-nio-80-exec-8#47|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|19-2|JSON||
+UserServiceImpl.java#io.bitryon.example.web.service.rpc.UserServiceImpl#getById#24#|
+[{
+	"userId": 123
+}]
+2025-11-08 00:57:37.862|http-nio-80-exec-8#47|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|19-3|TEXT||
+UserServiceImpl.java#io.bitryon.example.web.service.rpc.UserServiceImpl#getById#29|
+This should be remote service, will be with trace for user 123
+2025-11-08 00:57:37.862|http-nio-80-exec-8#47|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|19-4|JSON||
+UserServiceImpl.java#io.bitryon.example.web.service.rpc.UserServiceImpl#getById#24#R|
+[{
+	"name": "ra***ly",
+	"id": 123,
+	"driverLisenceId": "****************************",
+	"age": null
+}]
+2025-11-08 00:57:37.871|http-nio-80-exec-10#49|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|23-1|HTTP||
+LoggingHttpRequestWebReader.java#io.bitryon.logger.spring.LoggingHttpRequestWebReader#readHttpRequest#36|
+[{
+	"remoteHost": "127.0.0.1:64257"
+},{
+	"method": "POST"
+},{
+	"requestURL": "http://localhost/remote_api/user/get_by_id"
+},{
+	"headers": {}
+},{
+	"body": {}
+}]
+2025-11-08 00:57:37.873|http-nio-80-exec-10#49|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|23-2|JSON||
+UserServiceImpl.java#io.bitryon.example.web.service.rpc.UserServiceImpl#getById#24#|
+[{
+	"userId": 789
+}]
+2025-11-08 00:57:37.873|http-nio-80-exec-10#49|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|23-3|TEXT||
+UserServiceImpl.java#io.bitryon.example.web.service.rpc.UserServiceImpl#getById#29|
+This should be remote service, will be with trace for user 789
+2025-11-08 00:57:37.873|http-nio-80-exec-10#49|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|23-4|JSON||
+UserServiceImpl.java#io.bitryon.example.web.service.rpc.UserServiceImpl#getById#24#R|
+[{
+	"name": "ra***ly",
+	"id": 123,
+	"driverLisenceId": "****************************",
+	"age": null
+}]
+2025-11-08 00:57:37.841|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|1|HTTP||
+LoggingHttpRequestWebReader.java#io.bitryon.logger.spring.LoggingHttpRequestWebReader#readHttpRequest#36|
+[{
+	"remoteHost": "0:0:0:0:0:0:0:1:64251"
+},{
+	"method": "GET"
+},{
+	"requestURL": "http://localhost/api/medic/query"
+},{
+	"headers": {}
+},{
+	"body": {
+		"session_id": [
+			"xxx"
+		],
+		"offset": [
+			"0"
+		],
+		"size": [
+			"123"
+		]
+	}
+}]
+2025-11-08 00:57:37.847|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|2|JSON||
+ForStaticMethod.java#io.bitryon.example.web.test.ForStaticMethod#runStatic#15#|
+[{
+	"userId": 1762563457847
+}]
+2025-11-08 00:57:37.847|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|3|JSON||
+ForStaticMethod.java#io.bitryon.example.web.test.ForStaticMethod#runStatic#15#R|
+["e1d2fb44-c29c-4925-93cc-99081578eaf8"]
+2025-11-08 00:57:37.848|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|4|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#query#28#|
+[{
+	"sessionId": "xxx",
+	"page": {
+		"size": 123,
+		"offset": 0
+	}
+}]
+2025-11-08 00:57:37.848|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|5|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#query#29|
+[{
+	"sessionId": "xxx"
+}]
+2025-11-08 00:57:37.854|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|6|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#query#29R|
+[{
+	"name": "ra***ly",
+	"id": 456,
+	"driverLisenceId": "****************************",
+	"age": null
+}]
+2025-11-08 00:57:37.854|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|7|JSON||
+MedicDAO.java#io.bitryon.example.web.dao.MedicDAO#query#17#|
+[{
+	"userId": 456,
+	"page": {
+		"size": 123,
+		"offset": 0
+	}
+}]
+2025-11-08 00:57:37.855|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|8|JSON||
+MedicDAO.java#io.bitryon.example.web.dao.MedicDAO#query#17#R|
+[[
+	{
+		"id": 321,
+		"deceases": "idk,***ever",
+		"timeCreated": "5490-12-21 05:31:51.0051",
+		"userId": 123
+	},
+	{
+		"id": 654,
+		"deceases": "idk,***ever",
+		"timeCreated": "9011-12-11 11:03:42.0042",
+		"userId": 456
+	},
+	{
+		"id": 987,
+		"deceases": "idk,***ever",
+		"timeCreated": "12532-11-29 16:35:33.0033",
+		"userId": 789
+	}
+]]
+2025-11-08 00:57:37.856|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|9|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#callSelfInvocation#68#|
+[{
+	"testString": "xxx"
+}]
+2025-11-08 00:57:37.856|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|10|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#callSelfInvocation_protected#73#|
+[{
+	"testString": "xxx"
+}]
+2025-11-08 00:57:37.856|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|11|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#callSelfInvocation_friendly#78#|
+[{
+	"testString": "xxx"
+}]
+2025-11-08 00:57:37.856|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|12|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#callSelfInvocation_private#83#|
+[{
+	"testString": "xxx"
+}]
+2025-11-08 00:57:37.856|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|13|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#callSelfInvocation_final#88#|
+[{
+	"testString": "xxx"
+}]
+2025-11-08 00:57:37.856|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|14|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#callSelfInvocation_final#88#R|
+["1762563457856"]
+2025-11-08 00:57:37.856|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|15|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#callSelfInvocation_private#83#R|
+["1762563457856"]
+2025-11-08 00:57:37.857|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|16|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#callSelfInvocation_friendly#78#R|
+["1762563457857"]
+2025-11-08 00:57:37.857|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|17|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#callSelfInvocation_protected#73#R|
+["1762563457857"]
+2025-11-08 00:57:37.857|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|18|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#callSelfInvocation#68#R|
+["1762563457857"]
+2025-11-08 00:57:37.857|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|19|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#lambda$0#38|
+[{
+	"userId": 123
+}]
+2025-11-08 00:57:37.864|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|20|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#lambda$0#38R|
+[{
+	"name": "ra***ly",
+	"id": 123,
+	"driverLisenceId": "****************************",
+	"age": null
+}]
+2025-11-08 00:57:37.865|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|21|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#lambda$0#38|
+[{
+	"userId": 456
+}]
+2025-11-08 00:57:37.869|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|22|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#lambda$0#38R|
+[{
+	"name": "ra***ly",
+	"id": 123,
+	"driverLisenceId": "****************************",
+	"age": null
+}]
+2025-11-08 00:57:37.869|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|23|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#lambda$0#38|
+[{
+	"userId": 789
+}]
+2025-11-08 00:57:37.874|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|24|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#lambda$0#38R|
+[{
+	"name": "ra***ly",
+	"id": 123,
+	"driverLisenceId": "****************************",
+	"age": null
+}]
+2025-11-08 00:57:37.875|http-nio-80-exec-6#45|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|25|JSON||
+MedicService.java#io.bitryon.example.web.service.MedicService#query#28#R|
+[[
+	{
+		"medicConditionDO": {
+			"id": 321,
+			"deceases": "idk,***ever",
+			"timeCreated": "5490-12-21 05:31:51.0051",
+			"userId": 123
+		},
+		"user": {
+			"name": "ra***ly",
+			"id": 123,
+			"driverLisenceId": "****************************",
+			"age": null
+		}
+	},
+	{
+		"medicConditionDO": {
+			"id": 654,
+			"deceases": "idk,***ever",
+			"timeCreated": "9011-12-11 11:03:42.0042",
+			"userId": 456
+		},
+		"user": {
+			"name": "ra***ly",
+			"id": 123,
+			"driverLisenceId": "****************************",
+			"age": null
+		}
+	},
+	{
+		"medicConditionDO": {
+			"id": 987,
+			"deceases": "idk,***ever",
+			"timeCreated": "12532-11-29 16:35:33.0033",
+			"userId": 789
+		},
+		"user": {
+			"name": "ra***ly",
+			"id": 123,
+			"driverLisenceId": "****************************",
+			"age": null
+		}
+	}
+]]
+2025-11-08 00:57:37.524|scheduling-1#52|3NhAQiW9DDNI0FXK7YH6KRvUCmFhCYdg|1|JSON||
+SMTPEmailScheduler.java#io.bitryon.example.web.service.SMTPEmailScheduler#runMailRunnable#25#|
+[null]
+2025-11-08 00:57:37.525|scheduling-1#52|6reMqYAAV0DgcAusTM2DW3BuI2Dlq3x4|2-1|JSON|Send Verification Url To Customers|
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[{
+	"recipient": "tes***ail",
+	"verificationUrl": "http://localhost/unHookedThreadDelivery/1762563456967"
+}]
+2025-11-08 00:57:37.525|scheduling-1#52|6reMqYAAV0DgcAusTM2DW3BuI2Dlq3x4|2-2|TEXT||
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/unHookedThreadDelivery/1762563456967'>link</a> or copy http://localhost/unHookedThreadDelivery/1762563456967 to your brower before it expires in 10 minutes.</body></html>
+2025-11-08 00:57:37.525|scheduling-1#52|6reMqYAAV0DgcAusTM2DW3BuI2Dlq3x4|2-3|JSON|Send Verification Url To Customers|
+SMTPEmailService.java#io.bitryon.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+["<html><body>Please click on the <a href='http://localhost/unHookedThreadDelivery/1762563456967'>link</a> or copy http://localhost/unHookedThreadDelivery/1762563456967 to your brower before it expires in 10 minutes.</body></html>"]
+2025-11-08 00:57:37.525|scheduling-1#52|6reMqYAAV0DgcAusTM2DW3BuI2Dlq3x4|2-4|JSON||
+SMTPEmailScheduler.java#io.bitryon.example.web.service.SMTPEmailScheduler#runMailRunnable#25#R|
+[null]
+2025-11-08 00:57:37.866|http-nio-80-exec-9#48|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|21-1|HTTP||
+LoggingHttpRequestWebReader.java#io.bitryon.logger.spring.LoggingHttpRequestWebReader#readHttpRequest#36|
+[{
+	"remoteHost": "127.0.0.1:64257"
+},{
+	"method": "POST"
+},{
+	"requestURL": "http://localhost/remote_api/user/get_by_id"
+},{
+	"headers": {}
+},{
+	"body": {}
+}]
+2025-11-08 00:57:37.867|http-nio-80-exec-9#48|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|21-2|JSON||
+UserServiceImpl.java#io.bitryon.example.web.service.rpc.UserServiceImpl#getById#24#|
+[{
+	"userId": 456
+}]
+2025-11-08 00:57:37.867|http-nio-80-exec-9#48|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|21-3|TEXT||
+UserServiceImpl.java#io.bitryon.example.web.service.rpc.UserServiceImpl#getById#29|
+This should be remote service, will be with trace for user 456
+2025-11-08 00:57:37.868|http-nio-80-exec-9#48|1TAEmcpn0c5sQmuWo9JzvLUbkBUEIAPQ|21-4|JSON||
+UserServiceImpl.java#io.bitryon.example.web.service.rpc.UserServiceImpl#getById#24#R|
+[{
+	"name": "ra***ly",
+	"id": 123,
+	"driverLisenceId": "****************************",
+	"age": null
+}]

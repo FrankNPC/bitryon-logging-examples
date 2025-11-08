@@ -20,7 +20,7 @@ bitryon:
     print-file: true # write to file
     log-date-time-format: yyyy-MM-dd HH:mm:ss.SSS # UTC. the time on the head of the log. Leave blank will print System.currentTimeMillis
     log-async: true # false blocking IO; true NIO write files, it could lose part of logs if JVM crashes
-    log-light: true # full step info, or light. true: MedicController.java#io.bitryon.web.controller.MedicController#query#123; no thread info, type JSON->J, false: #.MedicController#query#123 [the sanitizer-patterns may be slightly different].
+    log-light: false # full step info, or light. true: MedicController.java#io.bitryon.web.controller.MedicController#query#123; no thread info, type JSON->J, false: #.MedicController#query#123 [the sanitizer-patterns may be slightly different].
     log-pretty: true # print pretty json and log, by new line and intends. close it in prd if needed.
     log-sanitizer-patterns: >
       /JSON/*Service*.java*.service.*UserService*#*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday),
