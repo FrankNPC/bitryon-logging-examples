@@ -1,7 +1,6 @@
 package io.bitryon.example.web.config;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 
 import java.io.IOException;
 
@@ -37,7 +36,7 @@ public class ExampleWebServerScheduler {
 //		return threadPoolTaskScheduler;
 //	}
 
-	@Scheduled(fixedDelay = 15 * 1000) 
+	//@Scheduled(fixedDelay = 15 * 1000) 
 	public void sendEmails() {
 		for(int i=0; i<10; i++) {
 			smtpEmailService.sendVerificationUrl("somebodyemailnotknowhoisabcdxxx@whoismail.unknown", "http://localhost/verifyyouremail");
@@ -45,13 +44,13 @@ public class ExampleWebServerScheduler {
 		}
 	}
 	
-	@Scheduled(fixedDelay = 5*1000, initialDelay = 5*1000) 
+	//@Scheduled(fixedDelay = 5*1000, initialDelay = 5*1000) 
 	public void runEmailRunnable() {
 		emailScheduler.runMailRunnable();
 	}
 
 	private boolean changed = false;
-	@Scheduled(fixedDelay = 60 * 1000) // print log head in logs if want to see boot-info and configures changes after all resource loaded
+	//@Scheduled(fixedDelay = 60 * 1000) // print log head in logs if want to see boot-info and configures changes after all resource loaded
 	public void refreshLogHeadIfNeeded() throws IOException {
 		if (changed) { return; }// if only need once.
 		changed = bitryonLoggerProvider.refresh();
