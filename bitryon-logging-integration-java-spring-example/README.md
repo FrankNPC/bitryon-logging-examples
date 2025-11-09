@@ -199,6 +199,11 @@ Sample:
 
 >> `For TYPE=JSON/ERROR: the param should be the key names: MASK(bean/property/map_key_name)`
 
+## Upload logs
+ - register account on dev-portal.bitryon.io or dev-portal.bitryon.io separately.
+ - create and active your organization.
+ - create and active the application and get the app_key for the agent.
+ - download and configure [bitryon-logging-agent](https://github.com/FrankNPC/bitryon-logging-examples/tree/master/bitryon-logging-agent) to upload the logs into bitryon.io for traces.
 
 ## Trace
 
@@ -207,9 +212,6 @@ It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID from/to the prev/next 
 configure bitryon.app-node.http-header-id-type to write HTTP_HEADER_STEP_TRACE_ID in HTTP response header, get it and access by the link: https://dev-portal.bitryon.io/trace.html?id=[X-Step-Trace-Id]; Or search by keywords through the portal.
 
 `Tips: it does not work well with ForkJoin pool E.G. CompletableFuture.runAsync()`
-
-## Upload logs
-download and configure [bitryon-logging-agent](https://github.com/FrankNPC/bitryon-logging-examples/tree/master/bitryon-logging-agent) to upload the logs into bitryon.io for traces.
 
 ## Unit Test / QA improvement
 the idea is to check if the values appear in the sample payload with the method calls' return. For some unit tests, we don't need to exam all of returned values and json-structure exactly matched. Therefore the sample must be a subset of the returned objects after the invoke. So we can manipulate unit tests by logs.

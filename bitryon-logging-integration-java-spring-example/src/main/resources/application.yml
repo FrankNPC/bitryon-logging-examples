@@ -38,7 +38,7 @@ bitryon:
     source-paths: > 
       src/main/java
     repository: RepoOwner/${spring.application.name} # project on github
-    branch: main
+    branch: master
     commit: xxxxxxx
 
   boot-info: # for info purpose, bitryon don't use it
