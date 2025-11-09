@@ -25,6 +25,7 @@ More details please check out [www.bitryon.io](https://www.bitryon.io) and [bitr
 
 more language supports coming soon
 
+
 ## Introduce in maven
 
 ```
@@ -48,29 +49,42 @@ Both way cannot co-exists.
 `Tips If start LoggerFactory earlier and bitryon_logger.properties exists, it will read and load configures exclusively; Otherwise, both mode will use the same configuration injected by spring`
 
 
-## Initiate the Logger
+### Personal Identity or sensitive Information protection
+
+ - sanitizer : /TYPE/Step/[placeholder: *]/MASK(key1|key2)/[placeholder: KEY-base62]/AES(key1|key2)
+ - start with /, not end with /; can place multiple groups; $ is to pass parameters.
+ - Or, start without / to match specified method by @Logging;
+ 
+> TYPE: in general it's JSON, could be ERROR or TEXT etc.
+
+> Step: support wildcard match:
+>> `/JSON/*Controller.java*controller.*Controller#*/*/MASK(encryptionKey)/*/MD5(sessionId|session_id)`
+
+> placeholder: should be base 62 GMP for [vector of MD5/SHA1/SHA256 and key for AES]; may leave it empty then it will use default *
+
+> Currently supported
 
 ```java
-		// 1: load logger agent
-		LoggingInitiation.premain(null);
-
-		// 2: load logger configure
-		LoggerProvider provider = LoggerProvider.getProvider("bitryon_log.properties", null);
-		
-		// 3: load LoggingMethodIntercepter, In spring it doesn't need
-		// Must do to setup LoggingMethodIntercepter and LoggerProvider
-		new LoggingMethodIntercepter(provider);
-		
-		// Or by LoggerFactory default settings
-//		new LoggingMethodIntercepter(LoggerFactory.getLoggerProvider());
-		
-		// use by tradition logger style
-//		private static final Logger logger = LoggerFactory.getLogger();
-//		logger.log(objects);
-//		logger.text("print objects {} {}", objects...);
+		EMPTY, -- set the string value of the keys to empty string
+		SKIP, -- skip the value of the key so the log doesn't print it.
+		POPULAR, -- capture it then scan the entire log to replace all. can use with others: POPULAR(MASK(key1))
+		AES, -- AES encryption.
+		MD5, -- MD5(key1) -> XWvr4b7h0XBFB79Irz1ny; MD5$1(key1) -> XWvr4b7h0XBFB79Irz1ny-423; 423 is the length of the original text
+		SHA1, -- similar with MD5
+		SHA256, -- similar with MD5
+		MASK, -- Mask the value of the key:
+			 */MASK(key1) -> ***123456 -> *****; 
+			 */MASK$3(key1) -> 12345678 ->123***678; 12345 -> 123***45
+		DATE_FORMATER: -- yyyy-hh-mm HH:MM:ss.ssss/DATE_FORMATER(key); the placeholder is the formatter. See java.text.SimpleDateFormat
+		FLOAT_FORMATER: -- #,##0.00/FLOAT_FORMATER(key); the placeholder is the formatter. See java.text.DecimalFormat
+		DECIMAL_FORMATER: -- same with FLOAT_FORMATER
 ```
-		
-## @Logging, there are two ways to use
+
+>> `For TYPE=TEXT: The param should be a regexp to capture text: MASK(license=[a-z0-9]+)`
+
+>> `For TYPE=JSON/ERROR: the param should be the key names: MASK(bean/property/map_key_name)`
+
+## Use @Logging, there are two ways
 
 - 1, On method (Recommended, supporting log sample test)
 
@@ -143,17 +157,41 @@ Sample:
 `Tips: line number 0 means no catcher class/package, or on interface`
 
 
+
 ## turn on the logging
 
  * There are three ways to turn on the logging:
  * 1: load agent before any classes: 
  
- ```
-	public static void main(String[] args) {
-		//io.bitryon.logger.boostrap.LoggingInitiation.premain(null); // must load before everything. or add https://github.com/FrankNPC/bitryon-logging-examples/blob/master/bitryon-logging-integration-java-spring-example/src/main/resources/META-INF/spring.factories 
-		new SpringApplicationBuilder(ServerBootApplication.class).run(args);
-	}
+
+```java
+	// In Spring 
+	
+		public static void main(String[] args) {
+			//io.bitryon.logger.boostrap.LoggingInitiation.premain(null); // must load before everything. or add https://github.com/FrankNPC/bitryon-logging-examples/blob/master/bitryon-logging-integration-java-spring-example/src/main/resources/META-INF/spring.factories 
+			new SpringApplicationBuilder(ServerBootApplication.class).run(args);
+		}
+	
+	// In java
+		// 1: load logger agent
+		LoggingInitiation.premain(null);
+
+		// 2: load logger configure
+		LoggerProvider provider = LoggerProvider.getProvider("bitryon_log.properties", null);
+		
+		// 3: load LoggingMethodIntercepter, In spring it doesn't need
+		// Must do to setup LoggingMethodIntercepter and LoggerProvider
+		new LoggingMethodIntercepter(provider);
+		
+		// Or by LoggerFactory default settings
+//		new LoggingMethodIntercepter(LoggerFactory.getLoggerProvider());
+		
+		// use by tradition logger style
+//		private static final Logger logger = LoggerFactory.getLogger();
+//		logger.log(objects);
+//		logger.text("print objects {} {}", objects...);
 ```
+
  * 2: load the jar with javaagent: java -javaagent:bitryon-logger-1.0.1.jar= -jar your-app.jar
  * 3: add io.bitryon.logger.spring.LoggingInitiationSpringApplicationRunListener to META-INF/spring.factories
  
@@ -162,48 +200,13 @@ Sample:
  * Y: Annotate methods/classes/interfaces with @Logging, or manually add methods: io.bitryon.logger.boostrap.LoggingMethodIntercepter.addTargetMethods/addTargetMethod/addClasses
  * Z: Integrate bitryon-logger-spring-boot-starter with AutoConfigurationBitryonLogger could work for AOP to proxy interfaces.
 
----
-
-## PII or sensitive info protection
-
- - sanitizer : /TYPE/Step/[placeholder: *]/MASK(key1|key2)/[placeholder: KEY-base62]/AES(key1|key2)
- - start with /, not end with /; can place multiple groups; $ is to pass parameters.
- - Or, start without / to match specified method by @Logging;
- 
-> TYPE: in general it's JSON, could be ERROR or TEXT etc.
-
-> Step: support wildcard match:
->> `/JSON/*Controller.java*controller.*Controller#*/*/MASK(encryptionKey)/*/MD5(sessionId|session_id)`
-
-> placeholder: should be base 62 GMP for [vector of MD5/SHA1/SHA256 and key for AES]; may leave it empty then it will use default *
-
-> Currently supported
-
-```java
-		EMPTY, -- set the string value of the keys to empty string
-		SKIP, -- skip the value of the key so the log doesn't print it.
-		POPULAR, -- capture it then scan the entire log to replace all. can use with others: POPULAR(MASK(key1))
-		AES, -- AES encryption.
-		MD5, -- MD5(key1) -> XWvr4b7h0XBFB79Irz1ny; MD5$1(key1) -> XWvr4b7h0XBFB79Irz1ny-423; 423 is the length of the original text
-		SHA1, -- similar with MD5
-		SHA256, -- similar with MD5
-		MASK, -- Mask the value of the key:
-			 */MASK(key1) -> ***123456 -> *****; 
-			 */MASK$3(key1) -> 12345678 ->123***678; 12345 -> 123***45
-		DATE_FORMATER: -- yyyy-hh-mm HH:MM:ss.ssss/DATE_FORMATER(key); the placeholder is the formatter. See java.text.SimpleDateFormat
-		FLOAT_FORMATER: -- #,##0.00/FLOAT_FORMATER(key); the placeholder is the formatter. See java.text.DecimalFormat
-		DECIMAL_FORMATER: -- same with FLOAT_FORMATER
-```
-
->> `For TYPE=TEXT: The param should be a regexp to capture text: MASK(license=[a-z0-9]+)`
-
->> `For TYPE=JSON/ERROR: the param should be the key names: MASK(bean/property/map_key_name)`
 
 ## Upload logs
  - register account on dev-portal.bitryon.io or dev-portal.bitryon.io separately.
  - create and active your organization.
  - create and active the application and get the app_key for the agent.
  - download and configure [bitryon-logging-agent](https://github.com/FrankNPC/bitryon-logging-examples/tree/master/bitryon-logging-agent) to upload the logs into bitryon.io for traces.
+
 
 ## Trace
 
@@ -252,6 +255,13 @@ Do this in spring will automatically bring up the methods from beans and run the
 `Tips: the tests won't run with sanitizers.`
 
 
+
+
+![Java](https://img.shields.io/badge/Java-9+-blue?logo=java)
+![Maven](https://img.shields.io/badge/Build-Maven-orange?logo=apachemaven)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-brightgreen?logo=springboot)
+
+
 # bitryon-logger-spring-boot-starter
 
  - 1, introduce the jar, annotate beans with [@Logging](https://github.com/FrankNPC/bitryon-logger/blob/master/src/main/java/io/bitryon/logger/annotation/Logging.java)
@@ -267,6 +277,7 @@ Do this in spring will automatically bring up the methods from beans and run the
 
  - 2, configuration. see the explains in src/*/resource/application.xml, configure logger and app-node.
     -  import AutoConfigurationBitryonLogger.class to declare default Logging.
+    -  If there is no configs from spring, it will go to LoggerFactory and bitryon_logger.properties to get the LoggerProvider as fallback
 
  - 3, configure http client by adding LoggingHttpClientHeaderWriterInterceptor to write header HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id), so the next app/service/web-server can pick it up. 
 See [UserServiceSubscriber](https://github.com/FrankNPC/bitryon-logging-examples/blob/master/bitryon-logging-integration-java-spring-example/src/main/java/io/bitryon/example/web/config/UserServiceSubscriber.java)
