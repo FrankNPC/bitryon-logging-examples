@@ -14,7 +14,7 @@ import jakarta.annotation.Resource;
 
 @Configuration
 @Import(value= {
-	AutoConfigurationBitryonLogger.class, // to load the configs from application.xml for logging related beans
+	AutoConfigurationBitryonLogger.class, // to load the configs from application.yml for logging related beans
 
 	AutoConfigurationServiceProvider.class, // Turn on RPC service provider
 })
