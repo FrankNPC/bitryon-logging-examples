@@ -1,4 +1,4 @@
-2025-08-11 16:01:40.594|main-http-nio-80-exec-1-40-5|5o0ku57lL7LVoG3N4Pqm89byaX5tBwHi|4|JSON||
+2025-08-11 16:01:40.594|main-http-nio-80-exec-1-40-5|5o0ku57lL7LVoG3N4Pqm89byaX5tBwHi|4|JSON|
 MedicService.java#io.bitryon.example.web.service.MedicService#query#-2222222#|
 [
     {
@@ -9,7 +9,7 @@ MedicService.java#io.bitryon.example.web.service.MedicService#query#-2222222#|
         }
     }
 ]
-2025-08-11 16:01:41.300|main-http-nio-80-exec-1-40-5|5o0ku57lL7LVoG3N4Pqm89byaX5tBwHi|15|JSON||
+2025-08-11 16:01:41.300|main-http-nio-80-exec-1-40-5|5o0ku57lL7LVoG3N4Pqm89byaX5tBwHi|15|JSON|
 MedicService.java#io.bitryon.example.web.service.MedicService#query#-111111#R|
 [
     [

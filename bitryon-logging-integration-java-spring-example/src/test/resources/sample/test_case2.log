@@ -1,11 +1,11 @@
-||||||
+|||||
 UserServiceImpl.java#io.bitryon.example.web.service.rpc.UserServiceImpl#getBySessionId#37#|
 [
     {
         "sessionId":"xxx"
     }
 ]
-||||||
+|||||
 UserServiceImpl.java#io.bitryon.example.web.service.rpc.UserServiceImpl#getBySessionId#37#R|
 [
     {

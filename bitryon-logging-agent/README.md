@@ -1,7 +1,7 @@
 
-![Java](https://img.shields.io/badge/Java-1.8-blue?logo=java)
-![Maven](https://img.shields.io/badge/Build-Maven-orange?logo=apachemaven)
-![Terraform](https://img.shields.io/badge/Terraform-blue?logo=Terraform)
+![Java](https://img.shields.io/badge/Java-1.8-orange?logo=java)
+![Maven Central](https://img.shields.io/badge/Maven%20Central-available-blue?logo=apachemaven)
+![Terraform](https://img.shields.io/badge/Terraform-purple?logo=Terraform)
 ![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey?logo=open-source-initiative)
 
 ## The logging agent ##

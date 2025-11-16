@@ -1,6 +1,6 @@
 
-![Java](https://img.shields.io/badge/Java-9+-blue?logo=java)
-![Maven](https://img.shields.io/badge/Build-Maven-orange?logo=apachemaven)
+![Java](https://img.shields.io/badge/Java-9+-orange?logo=java)
+![Maven Central](https://img.shields.io/badge/Maven%20Central-available-blue?logo=apachemaven)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-brightgreen?logo=springboot)
 ![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey?logo=open-source-initiative)
 
@@ -9,13 +9,13 @@
 
 Why bitryon logger?
 
-bitryon logger is the next generation logger and tracing solution, seamlessly unify logs across services as workflow, sanitize sensitive/personal identification information/PII content painlessly, and test supports against models and services.
+bitryon logger is the next generation logger and tracing solution, seamlessly unify logs across services as traceable workflow, sanitize sensitive/personal identification information/PII content painlessly, and test supports against models and services.
 
-1: logging could be much ambiguous leading the troubleshoot very exhausted. with bitryon logger, just configuration can cover all of necessary logs. bitryon logger also support writing logs to the tracing by your own. -- with proper configuration even no need to write a single log.
+1: logging could be much ambiguous leading the troubleshoot very exhausted. with bitryon logger, just configuration can cover all of necessary logs. bitryon logger supports writing logs to the tracing by your own. -- with proper configuration even no need to write a single log.
 
 2: When you access complicated business logic cross services, tracing the payloads would be much challenging. bitryon logger provides logging in language support(No need http proxy/servers) to capture the entire logic traces - no need to search logs any more although we provide.
 
-3: when you sanitize sensitive/PII in the logs, the difficulty is you may do it before writing into logs, or other assistances. Simple bitryon logger configurations can convert to the desired mask or encryption without changing code.
+3: when you sanitize Personal Identity or sensitive Information in the logs, the difficulty is you may do it before writing into logs. Built-in bitryon logger configurations can convert to the desired mask or encryption without changing code effortlessly.
 
 4: with well preserved logs, in batch basis painlessly testing or re-entering the methods that were failed due to bugs or errors turns troubleshooting and datafix an easy job.
 
@@ -47,6 +47,8 @@ for LoggerFactory, place bitryon_logger.properties under the resource path. See 
 Both way cannot co-exists. 
 
 `Tips If start LoggerFactory earlier and bitryon_logger.properties exists, it will read and load configures exclusively; Otherwise, both mode will use the same configuration injected by spring`
+
+See [BitryonLoggingExampleTest](https://github.com/FrankNPC/bitryon-logger/blob/master/src/test/java/io/bitryon/logger/provider/logging/BitryonLoggingExample.java)
 
 
 ### Personal Identity or sensitive Information protection
@@ -196,13 +198,13 @@ Sample:
  * 3: add io.bitryon.logger.spring.LoggingInitiationSpringApplicationRunListener to META-INF/spring.factories
  
  * In general, either one of above should be enough,
- * X: It may not work on final methods, or interface with @Logging, or with JUnit, try proxy and AOP pointcut
- * Y: Annotate methods/classes/interfaces with @Logging, or manually add methods: io.bitryon.logger.boostrap.LoggingMethodIntercepter.addTargetMethods/addTargetMethod/addClasses
+ * X: It may not work on final methods. For interface, try proxy and AOP pointcut
+ * Y: Annotate methods/classes with @Logging, or manually add methods: io.bitryon.logger.boostrap.LoggingMethodIntercepter.addTargetMethods/addTargetMethod/addClasses
  * Z: Integrate bitryon-logger-spring-boot-starter with AutoConfigurationBitryonLogger could work for AOP to proxy interfaces.
 
 
 ## Upload logs
- - register account on dev-portal.bitryon.io or dev-portal.bitryon.io separately.
+ - register account on dev-portal.bitryon.io or prd-portal.bitryon.io separately.
  - create and active your organization.
  - create and active the application and get the app_key for the agent.
  - download and configure [bitryon-logging-agent](https://github.com/FrankNPC/bitryon-logging-examples/tree/master/bitryon-logging-agent) to upload the logs into bitryon.io for traces.
@@ -257,8 +259,8 @@ Do this in spring will automatically bring up the methods from beans and run the
 
 
 
-![Java](https://img.shields.io/badge/Java-9+-blue?logo=java)
-![Maven](https://img.shields.io/badge/Build-Maven-orange?logo=apachemaven)
+![Java](https://img.shields.io/badge/Java-9+-orange?logo=java)
+![Maven Central](https://img.shields.io/badge/Maven%20Central-available-blue?logo=apachemaven)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-brightgreen?logo=springboot)
 
 

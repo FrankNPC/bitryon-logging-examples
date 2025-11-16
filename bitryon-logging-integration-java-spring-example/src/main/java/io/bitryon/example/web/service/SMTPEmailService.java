@@ -4,15 +4,14 @@ import org.springframework.stereotype.Service;
 
 import io.bitryon.logger.Logger;
 import io.bitryon.logger.annotation.Logging;
-import jakarta.annotation.Resource;
+import io.bitryon.logger.provider.LoggerFactory;
 
 @Service
 public class SMTPEmailService {
 	
-	@Resource
-	Logger logger;
+	private static final Logger logger = LoggerFactory.getLogger();
 
-	@Logging(sanitizerPatterns="*/MASK$3(recipient)", skipRandom=Integer.MAX_VALUE >>> 1, name="Send Verification Url To Customers")// mask the recipient JSON/*EmailService.sendByNoRepply*
+	@Logging(sanitizerPatterns="*/MASK$3(recipient)", skipRandom=Integer.MAX_VALUE >>> 1)// mask the recipient JSON/*EmailService.sendByNoRepply*
 	public String sendVerificationUrl(String recipient, String verificationUrl) {
 		recipient = recipient.trim();
 		String htmlContent = 

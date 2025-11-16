@@ -21,6 +21,8 @@ public class UserServiceImpl { // impelements UserService {
 	@Resource
 	Logger logger;
 	
+	//private static final Logger logger = LoggerFactory.getLogger(); // both work. recommended
+
 	public User getById(Long userId){
 		if (userId==null) {
 			return null;
@@ -33,7 +35,7 @@ public class UserServiceImpl { // impelements UserService {
 			SimpleDateFormat simpleDateFormater = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
 			user.setBirthday(simpleDateFormater.parse("2025-08-10T15:42:17.123+02"));
 		} catch (ParseException e) {
-			e.printStackTrace();
+			logger.exception(e);
 		}
 		user.setDriverLisenceId("a number that you can't know");
 		user.setName("randome guy probably");
@@ -50,7 +52,7 @@ public class UserServiceImpl { // impelements UserService {
 			SimpleDateFormat simpleDateFormater = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
 			user.setBirthday(simpleDateFormater.parse("2025-08-10T15:42:17.123+02"));
 		} catch (ParseException e) {
-			e.printStackTrace();
+			logger.exception(e);
 		}
 		user.setDriverLisenceId("a number that you can't know");
 		user.setName("randome guy probably");
@@ -67,7 +69,7 @@ public class UserServiceImpl { // impelements UserService {
 			SimpleDateFormat simpleDateFormater = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
 			user.setBirthday(simpleDateFormater.parse("2025-08-10T15:42:17.123+02"));
 		} catch (ParseException e) {
-			e.printStackTrace();
+			logger.exception(e);
 		}
 //		user.setDriverLisenceId("new DL Id");
 //		user.setName("john");
