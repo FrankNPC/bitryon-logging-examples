@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 public class BitryonIntegrationExampleBootApplication {
 	public static void main(String[] args) {
 //		// must load before everything. or add in META-INF/spring.factories 
-//		io.bitryon.logger.boostrap.LoggingInitiation.premain(null);
+//		io.bitryon.logger.boostrap.LoggingProxyInitiation.premain(null);
 //		// start after the logging proxy to launch Opentelemetry
 //		io.bitryon.logger.provider.LoggerFactory.getLoggerProvider(
 //				new io.bitryon.logger.opentelemetry.OpenTelemetryLogDispatcher("http://127.0.0.1:8134/v1/logs"));

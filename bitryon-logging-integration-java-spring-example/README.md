@@ -170,13 +170,13 @@ Sample:
 	// In Spring 
 	
 		public static void main(String[] args) {
-			//io.bitryon.logger.boostrap.LoggingInitiation.premain(null); // must load before everything. or add https://github.com/FrankNPC/bitryon-logging-examples/blob/master/bitryon-logging-integration-java-spring-example/src/main/resources/META-INF/spring.factories 
+			//io.bitryon.logger.boostrap.LoggingProxyInitiation.premain(null); // must load before everything. or add https://github.com/FrankNPC/bitryon-logging-examples/blob/master/bitryon-logging-integration-java-spring-example/src/main/resources/META-INF/spring.factories 
 			new SpringApplicationBuilder(ServerBootApplication.class).run(args);
 		}
 	
 	// In java
 		// 1: load logger agent
-		LoggingInitiation.premain(null);
+		LoggingProxyInitiation.premain(null);
 
 		// 2: load logger configure
 		LoggerProvider provider = LoggerProvider.getProvider("bitryon_log.properties", null);
@@ -195,7 +195,7 @@ Sample:
 ```
 
  * 2: load the jar with javaagent: java -javaagent:bitryon-logger-1.0.1.jar= -jar your-app.jar
- * 3: add io.bitryon.logger.spring.LoggingInitiationSpringApplicationRunListener to META-INF/spring.factories
+ * 3: add io.bitryon.logger.spring.LoggingProxyInitiationSpringApplicationRunListener to META-INF/spring.factories
  
  * In general, either one of above should be enough,
  * X: It may not work on final methods. For interface, try proxy and AOP pointcut
