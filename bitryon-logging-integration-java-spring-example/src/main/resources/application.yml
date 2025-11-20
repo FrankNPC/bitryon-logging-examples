@@ -7,6 +7,16 @@ server:
 spring:
   application:
     name: bitryon-logging-integration-java-spring-example
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: demo-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
 example:
   service:
@@ -59,4 +69,5 @@ logging:
     jdk.event.security: OFF
     org.apache.http: OFF
     org.apache.hc: OFF
-
+    org.apache.kafka: INFO
+    org.springframework.kafka: INFO

@@ -12,6 +12,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 
+import io.bitryon.example.web.kafka.KafkaProducer;
 import io.bitryon.example.web.model.MedicCondition;
 import io.bitryon.example.web.model.MedicConditionDO;
 import io.bitryon.example.web.model.Page;
@@ -41,6 +42,9 @@ public class MedicConditionController {
 	
 	@Resource
 	SMTPEmailScheduler emailScheduler;
+
+	@Resource
+	KafkaProducer kafkaMessageProducer;
 	
 	// Hit the api with URL: http://localhost/api/medic/query?session_id=xxx&offset=0&size=123
 	@RequestMapping(value = "/medic/query", produces=MediaType.APPLICATION_JSON_VALUE)
@@ -83,6 +87,14 @@ public class MedicConditionController {
 //		emailScheduler.childThreadDelivery("test@email.email", "http://localhost/childThreadDelivery/"+System.currentTimeMillis());
 		emailScheduler.unHookedThreadDelivery("test@email.email", "http://localhost/unHookedThreadDelivery/"+System.currentTimeMillis());
 		return JsonToString(new MedicConditionDO(), "");
+	}
+
+	// Hit the api with URL: http://localhost/api/medic/publish?message=xxxmessageess
+	@RequestMapping(value = "/medic/publish")
+	public ResponseEntity<String> publishMessage(@RequestParam String message) {
+		ForStaticMethod.runStatic(0L);
+		kafkaMessageProducer.sendMessage(message);
+		return ResponseEntity.ok("Message sent to Kafka: " + message);
 	}
 	
 	protected <T> ResponseEntity<String> JsonToString(T result, String callback) throws JsonProcessingException {
