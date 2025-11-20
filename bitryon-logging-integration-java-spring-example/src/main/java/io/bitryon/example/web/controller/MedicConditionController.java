@@ -89,7 +89,7 @@ public class MedicConditionController {
 		return JsonToString(new MedicConditionDO(), "");
 	}
 
-	// Hit the api with URL: http://localhost/api/medic/publish?message=xxxmessageess
+	// Hit the api with URL: http://localhost/api/medic/publish?message=68ssTfeP43IeSVqFWx1jH1VigFuEdUbt
 	@RequestMapping(value = "/medic/publish")
 	public ResponseEntity<String> publishMessage(@RequestParam String message) {
 		ForStaticMethod.runStatic(0L);
